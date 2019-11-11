@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Drawing Area</title>
+<!-- You can add your style here rather than in an external style sheet. -->
+<style>
+	canvas {
+	    border:5px solid #d3d3d3;
+	    background-color: #f1f1f1;
+	    display: block;
+	}
+</style>
+</head>
+<body>
+    <!-- DO NOT MODIFY THIS HTML -->
+    <canvas id = "myCanvas" width = "350" height = "500"  ></canvas>
+    <input type = "color" id = "picker"/>
+
+	<script>
+
+	var canvas = document.getElementById("myCanvas")
+	var ctx = canvas.getContext("2d");
+
+	canvas.width = window.innerWidth * 0.8;
+  canvas.height = window.innerHeight * 0.8;
+
+	myCanvas.addEventListener(
+	  'mousemove',function(e){
+	    console.log(e);
+			draw(e.x, e.y);
+		}
+	)
+
+	window.addEventListener(
+	  'keydown', function(e){
+	    console.log(e);
+			if (e.keyCode == 32){
+				clear();
+			}
+			if (e.keyCode == 66){
+				drawblue();
+			}
+			if (e.keyCode == 82){
+				drawred();
+			}
+			if (e.keyCode == 89){
+				drawyellow();
+			}
+			if (e.keyCode == 71){
+				drawgreen();
+			}
+	  }
+	)
+
+		function draw(x,y){
+	    ctx.beginPath();
+	    ctx.arc(x, y, 10, 0, Math.PI * 2, true);
+	    ctx.fill();
+			ctx.stroke();
+		}
+
+		function drawblue(x,y){
+			ctx.beginPath();
+			ctx.arc(x, y, 10, 0, Math.PI * 2, true);
+			ctx.fillStyle = "#0000FF";
+			ctx.fill();
+			ctx.strokeStyle = "#0000FF";
+			ctx.stroke();
+		}
+
+		function drawred(x,y){
+			ctx.beginPath();
+			ctx.arc(x, y, 10, 0, Math.PI * 2, true);
+			ctx.fillStyle = "#FF0000";
+			ctx.fill();
+			ctx.strokeStyle = "#FF0000";
+			ctx.stroke();
+		}
+
+		function drawyellow(x,y){
+			ctx.beginPath();
+			ctx.arc(x, y, 10, 0, Math.PI * 2, true);
+			ctx.fillStyle = "#FFFF00";
+			ctx.fill();
+			ctx.strokeStyle = "#FFFF00";
+			ctx.stroke();
+		}
+
+		function drawgreen(x,y){
+			ctx.beginPath();
+			ctx.arc(x, y, 10, 0, Math.PI * 2, true);
+			ctx.fillStyle = "#008000";
+			ctx.fill();
+			ctx.strokeStyle = "#008000";
+			ctx.stroke();
+		}
+
+		function clear(x){
+			ctx.clearRect(0,0, canvas.width, canvas.height);
+		}
+
+	</script>
+</body>
+</html>
